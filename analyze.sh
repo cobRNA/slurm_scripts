@@ -26,9 +26,9 @@ do
     after=$(zcat ${file} | paste - - - - | LC_ALL=C sort -u --parallel=4 -T ./temp | wc -l)
     echo -e "After:\t${after}" >> results
     if [ $before -ne $after ]; then
-        echo 'FAILED! Duplicated entries detected!'
+        echo 'FAILED! Duplicated entries detected!' >> results
     else
-        echo 'PASSED!'
+        echo 'PASSED!' >> results
     fi
     echo "######################" >> results
     echo "${file} completed!"
