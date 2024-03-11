@@ -2,7 +2,7 @@
 #SBATCH --mem=250G
 #SBATCH --gres=gpu:8
 #SBATCH --partition=tesla
-#SBATCH --time=48:00:00
+#SBATCH --time=100:00:00
 #SBATCH --mail-type=BEGIN,END
 
 # Unload all loaded modulefiles
