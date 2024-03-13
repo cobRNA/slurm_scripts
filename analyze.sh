@@ -12,8 +12,8 @@ exit
 fi
 
 # create results file storing output
-echo 'Number of lines before and after deduplication' > results
-echo '---------------------------------------------------' > results
+echo 'Number of lines before and after deduplication' >> results
+echo '---------------------------------------------------' >> results
 
 # search for duplicated lines (keep in mind those are fastq structured files)
 
