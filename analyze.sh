@@ -21,6 +21,11 @@ for file in *$1
 do
     echo "Analyzing ${file}..."
     echo "${file}" >> results
+    echo "Data sample:" >> results
+    echo "........................." >> results
+    data_sample=$(zcat ${file} | head -n 4)
+    echo "${data_sample}" >> results
+    echo "........................." >> results
     before=$(zcat ${file} | paste - - - - | wc -l)
     echo -e "Before:\t${before}" >> results
     after=$(zcat ${file} | paste - - - - | LC_ALL=C sort -u --parallel=4 -T ./temp | wc -l)
