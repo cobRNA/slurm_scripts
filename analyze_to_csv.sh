@@ -5,8 +5,8 @@
 
 # Notify if not given extension (or given more than one)
 if [ $# -ne 1 ]; then
-echo "USAGE: ./analyse.sh extension"
-echo "Eg.: ./analyse.sh .fastq.gz"
+echo "USAGE: ./analyse.sh *extension"
+echo "Eg.: ./analyse.sh *.fastq.gz"
 echo "Every file with .fastq.gz extension will be checked."
 exit
 fi
@@ -16,7 +16,7 @@ echo 'Sample_name,Before,After' > results
 
 # search for duplicated lines (keep in mind those are fastq structured files)
 
-for file in *$1
+for file in $1
 do
     echo "Analyzing ${file}..."
     before=$(zcat ${file} | paste - - - - | wc -l)
