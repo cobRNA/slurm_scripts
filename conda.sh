@@ -14,16 +14,30 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $M
 bash $MINICONDA_DIR/miniconda.sh -b -u -p $MINICONDA_DIR
 rm -rf $MINICONDA_DIR/miniconda.sh
 
-# Dont run this, it will add trash in .bashrc and probably is not necessary
-# If necessary, comment out conda lines in .bashrc and run steps below
+# To make conda work you can:
+# 1. bloat .bashrc and slow down your startup significantly
+# 2. add path to conda manually and run `source activate base` when working conda is needed
+
+####### FIRST WAY:
+######################
+# bloat .bashrc and wish for the best:
 #$MINICONDA_DIR/bin/conda init bash
 
-# Add to PATH
-echo "# Add conda to PATH" >> $HOME/.bashrc
-echo -e "export PATH=$MINICONDA_DIR/bin:\$PATH" >> $HOME/.bashrc
-
-# Reload .bashrc
-source $HOME/.bashrc
-
-# To disable starting conda with (base) env run this:
+# disable starting conda with (base) env run this:
 #conda config --set auto_activate_base false
+
+# Didn't help to speed up starting time in my case
+
+####### SECOND WAY:
+######################
+# Add conda to PATH (to make conda commands work)
+#echo "# Add conda to PATH" >> $HOME/.bashrc
+#echo -e "export PATH=$MINICONDA_DIR/bin:\$PATH" >> $HOME/.bashrc
+# Reload .bashrc
+#source $HOME/.bashrc
+
+# Now, basic conda commands will work and terminal will work fast, but
+# conda activate ENV will not work
+# to make it work, run
+#source activate base
+
